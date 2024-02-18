@@ -66,10 +66,11 @@ ButtonComecar.addEventListener('click', function() {
         Atualizacao.classList.add('atualizacao')
         console.log(PalavraSecreta)
         JogoDisponivel = false
-        NumeroChutes = 5
+        NumeroChutes = 10
         PalavraSecretaElemento.classList.remove('errou')
         PalavraSecretaElemento.classList.remove('acertou')
         PalavraSecretaElemento.classList.add('normal')
+        NumeroChutesElemento.textContent = NumeroChutes
     } else {
         Atualizacao.textContent = 'Você já está jogando'
         Atualizacao.classList.remove('atualizacao')
