@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivinhe a Palavra</title>
+    <link rel="stylesheet" href="./estilo/jogo_da_forca.css">
+    <script src="./js/jogo_da_forca.js" defer></script>
+</head>
+<body>
+    <header id="cabecalho">Adivinhe a Palavra</header>
+    <h2 id="palavra_secreta" class="normal">Pal__av_a S__r_ta</h2>
+    <form id="form_tentativa_letra">
+        <input type="text" id="tentativa_letra" placeholder="Insira letra" maxlength="1">
+        <input type="button" value="Chutar" id="chute_letra_btn">
+    </form>
+    <form id="form_tentativa">
+        <input type="text" id="tentativa_usuario" placeholder="Insira sua tentativa aqui">
+        <input type="button" value="Chutar" id="chute_btn">
+    </form>
+    <div id="div_quantidade_chutes">
+        <span>Quantidade de chutes:</span>
+        <p id="numero_chutes">5</p>
+        <input type="button" value="+" id="btn_add_chute">
+    </div>
+    <div id="pontuacao">
+        <p>Pontos:</p>
+        <p id="numero_pontos">0</p>
+    </div>
+    <input type="button" value="Começar" id="btn_comecar">
+    <span class="atualizacao">Clique no Botão "Começar"</span>
+</body>
+</html>

@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#cabecalho {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: purple;
+    height: 60px;
+    width: 100vw;
+    color: white;
+}
+
+#palavra_secreta {
+    margin: 120px 0;
+    letter-spacing: 5px;
+}
+.normal {
+    color: blueviolet;
+}
+.errou {
+    color: red;
+}
+.acertou {
+    color: green;
+}
+
+/* tentativa por letra */
+
+#tentativa_letra {
+    border: none;
+    background-color: silver;
+    height: 30px;
+    width: 80px;
+    text-align: center;    
+}
+
+#chute_letra_btn {
+    margin-top: 20px;
+    background-color: blueviolet;
+    border: none;
+    height: 30px;
+    width: 100px;
+    color: white;
+    font-weight: bold;    
+}
+#chute_letra_btn:hover {
+    cursor: pointer;
+    background-color: violet;
+}
+
+/* tentativa por palavra */
+
+#tentativa_usuario {
+    border: none;
+    background-color: silver;
+    height: 30px;
+    width: 300px;
+    text-align: center;
+}
+
+#chute_btn {
+    margin-top: 20px;
+    background-color: blueviolet;
+    border: none;
+    height: 30px;
+    width: 100px;
+    color: white;
+    font-weight: bold;
+}
+#chute_btn:hover {
+    cursor: pointer;
+    background-color: violet;
+}
+
+/* Parte da compra de chutes */
+
+#div_quantidade_chutes {
+    margin-top: 15px;
+    display: flex;
+    gap: 5px;
+}
+#numero_chutes {
+    font-weight: bold;
+    color: deeppink;
+}
+#btn_add_chute{
+    height: 19px;
+    padding-bottom: 1px;
+    width: 20px;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    font-weight: bold;
+}
+#btn_add_chute:hover{
+    cursor: pointer;
+    background-color: violet;
+}
+
+/* Parte da Pontuação */
+
+#pontuacao {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+#numero_pontos {
+    color: deeppink;
+    font-weight: bold;
+}
+
+/* Botao começar */
+#btn_comecar {
+    margin-top: 20px;
+    background-color: purple;
+    border: none;
+    height: 40px;
+    width: 180px;
+    color: white;
+    font-weight: bold; 
+}
+#btn_comecar:hover {
+    cursor: pointer;
+    background-color: plum;
+}
+
+.atualizacao {
+    margin-top: 10px;
+    color:  purple;
+    font-size: small;
+}
+.deu_errado {
+    margin-top: 10px;
+    color: red;
+    font-size: small;
+}
+
+@media (max-width: 430px) {
+    #tentativa_usuario {
+        width: 180px;
+    }
+}
