@@ -22,7 +22,7 @@ body {
 }
 
 #palavra_secreta {
-    margin: 120px 0;
+    margin: 110px 0;
     letter-spacing: 5px;
 }
 .normal {
@@ -33,6 +33,10 @@ body {
 }
 .acertou {
     color: green;
+}
+
+#resposta {
+    font-size: large;
 }
 
 /* tentativa por letra */

@@ -1,4 +1,5 @@
 var PalavraSecretaElemento = document.querySelector('#palavra_secreta')
+let Resposta = document.querySelector('#resposta')
 
 var TentativaUsuarioLetra = document.querySelector('#tentativa_letra')
 let ChuteButtonLetra = document.querySelector('#chute_letra_btn')
@@ -55,6 +56,7 @@ function VerificarPalavra(palavra) {
 
 
 ButtonComecar.addEventListener('click', function() {
+    Resposta.textContent = ''
     if (JogoDisponivel == true) {
         PalavraCensurada = ''
         IndicePalavra = Math.floor(Math.random() * PalavrasSecretas.length) //definindo o indice alearorio da lista de palavras
@@ -66,7 +68,7 @@ ButtonComecar.addEventListener('click', function() {
         Atualizacao.classList.add('atualizacao')
         console.log(PalavraSecreta)
         JogoDisponivel = false
-        NumeroChutes = 10
+        NumeroChutes = 12
         PalavraSecretaElemento.classList.remove('errou')
         PalavraSecretaElemento.classList.remove('acertou')
         PalavraSecretaElemento.classList.add('normal')
@@ -76,6 +78,37 @@ ButtonComecar.addEventListener('click', function() {
         Atualizacao.classList.remove('atualizacao')
         Atualizacao.classList.add('deu_errado')
     }
+})
+
+TentativaUsuarioLetra.addEventListener('keypress', function(evento) {
+    if (JogoDisponivel==false){
+        if (evento.key === "Enter" && TentativaUsuarioLetra.value.length > 0) {
+            VerificarLetra(TentativaUsuarioLetra.value)
+            PalavraSecretaElemento.textContent = PalavraCensurada
+            NumeroChutes--
+            NumeroChutesElemento.textContent = NumeroChutes
+            evento.preventDefault()
+            if (PalavraCensurada == PalavraSecreta) {
+                PalavraSecretaElemento.classList.remove('normal')
+                PalavraSecretaElemento.classList.add('acertou')
+                NumeroPontos += NumeroChutes
+                NumeroPontosElemento.textContent = NumeroPontos
+                Atualizacao.textContent = 'Clique em "Começar"'
+                Resposta.textContent = `Resposta: ${PalavraSecreta}`
+            } else if (NumeroChutes <= 0){
+                PalavraSecretaElemento.classList.remove('normal')
+                PalavraSecretaElemento.classList.add('errou')
+                JogoDisponivel = true
+                Resposta.textContent = `Resposta: ${PalavraSecreta}`
+            }
+        } else if (evento.key == "Enter") {
+            evento.preventDefault()
+        }
+    }else {
+        Atualizacao.textContent = 'Clique primeiro em "Começar"'
+        Atualizacao.classList.remove('atualizacao')
+        Atualizacao.classList.add('deu_errado')
+    }    
 })
 
 ChuteButtonLetra.addEventListener('click', function(){
@@ -92,18 +125,46 @@ ChuteButtonLetra.addEventListener('click', function(){
                 NumeroPontos += NumeroChutes
                 NumeroPontosElemento.textContent = NumeroPontos
                 Atualizacao.textContent = 'Clique em "Começar"'
+                Resposta.textContent = `Resposta da anterior: ${PalavraSecreta}`
             } else if (NumeroChutes <= 0){
                 PalavraSecretaElemento.classList.remove('normal')
                 PalavraSecretaElemento.classList.add('errou')
                 JogoDisponivel = true
-
+                Resposta.textContent = `Resposta da anterior: ${PalavraSecreta}`
             }
         }
-
     }else {
         Atualizacao.textContent = 'Clique primeiro em "Começar"'
         Atualizacao.classList.remove('atualizacao')
         Atualizacao.classList.add('deu_errado')
+    }
+})
+
+TentativaUsuarioPalavra.addEventListener('keypress', function(evento){
+    if (JogoDisponivel==false){
+        if (evento.key == "Enter" && TentativaUsuarioPalavra.value.length > 0) {
+            VerificarPalavra(TentativaUsuarioPalavra.value)
+            PalavraSecretaElemento.textContent = PalavraCensurada
+            NumeroChutes--
+            NumeroChutesElemento.textContent = NumeroChutes
+            evento.preventDefault()
+            if (PalavraCensurada == PalavraSecreta) {
+                PalavraSecretaElemento.classList.remove('normal')
+                PalavraSecretaElemento.classList.add('acertou')
+                NumeroPontos += NumeroChutes
+                NumeroPontosElemento.textContent = NumeroPontos
+                JogoDisponivel = true
+                Atualizacao.textContent = 'Clique em "Começar"'
+                Resposta.textContent = `Resposta da anterior: ${PalavraSecreta}`
+            } else if (NumeroChutes <= 0){
+                PalavraSecretaElemento.classList.remove('normal')
+                PalavraSecretaElemento.classList.add('errou')
+                JogoDisponivel = true
+                Resposta.textContent = `Resposta da anterior: ${PalavraSecreta}`
+            }
+        } else if (evento.key == "Enter" && TentativaUsuarioPalavra.value == '') {
+            evento.preventDefault()
+        }
     }
 })
 
@@ -122,11 +183,12 @@ ChuteButtonPalavra.addEventListener('click', function(){
                 NumeroPontosElemento.textContent = NumeroPontos
                 JogoDisponivel = true
                 Atualizacao.textContent = 'Clique em "Começar"'
+                Resposta.textContent = `Resposta da anterior: ${PalavraSecreta}`
             } else if (NumeroChutes <= 0){
                 PalavraSecretaElemento.classList.remove('normal')
                 PalavraSecretaElemento.classList.add('errou')
                 JogoDisponivel = true
-
+                Resposta.textContent = `Resposta da anterior: ${PalavraSecreta}`
             }
         }
     }
